@@ -68,7 +68,7 @@ const Header = () => {
               </li>
               <li>
                 <NavLink
-                  to="/men"
+                  to="/mensSneaker"
                   className={({ isActive }) =>
                     isActive ? "py-2 border-b-2 border-red-500" : "py-2"
                   }
@@ -78,7 +78,7 @@ const Header = () => {
               </li>
               <li>
                 <NavLink
-                  to="/women"
+                  to="/mensPants"
                   className={({ isActive }) =>
                     isActive ? "py-2 border-b-2 border-red-500" : "py-2"
                   }
@@ -88,7 +88,7 @@ const Header = () => {
               </li>
               <li>
                 <NavLink
-                  to="/kids"
+                  to="/mensBoot"
                   className={({ isActive }) =>
                     isActive ? "py-2 border-b-2 border-red-500" : "py-2"
                   }
@@ -98,7 +98,7 @@ const Header = () => {
               </li>
               <li>
                 <NavLink
-                  to="/kids"
+                  to="/bag"
                   className={({ isActive }) =>
                     isActive ? "py-2 border-b-2 border-red-500" : "py-2"
                   }
@@ -108,7 +108,7 @@ const Header = () => {
               </li>
               <li>
                 <NavLink
-                  to="/kids"
+                  to="/cap"
                   className={({ isActive }) =>
                     isActive ? "py-2 border-b-2 border-red-500" : "py-2"
                   }
@@ -118,7 +118,7 @@ const Header = () => {
               </li>
               <li>
                 <NavLink
-                  to="/kids"
+                  to="/earphones"
                   className={({ isActive }) =>
                     isActive ? "py-2 border-b-2 border-red-500" : "py-2"
                   }
@@ -128,7 +128,7 @@ const Header = () => {
               </li>
               <li>
                 <NavLink
-                  to="/kids"
+                  to="/bottle"
                   className={({ isActive }) =>
                     isActive ? "py-2 border-b-2 border-red-500" : "py-2"
                   }
