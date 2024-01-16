@@ -1,4 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
+import cartIcon from "../../assets/cart_icon.png";
 
 const Header = () => {
   return (
@@ -13,9 +14,20 @@ const Header = () => {
           <div className="flex items-center lg:order-2">
             <Link
               to="/login"
-              className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 font-bold"
+              className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 rounded-lg px-4 lg:px-5 py-2 lg:py-2.5 font-bold"
             >
               Log in
+            </Link>
+            <Link
+              to="/cart"
+              className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 font-bold"
+            >
+              <div className="relative">
+                <img src={cartIcon} alt="" className="w-6" />
+                <span className="bg-orange-600 w-5 h-5 absolute -top-2 -right-3 rounded-full flex justify-center items-center text-white">
+                  0
+                </span>
+              </div>
             </Link>
             <button
               data-collapse-toggle="mobile-menu-2"
@@ -56,16 +68,6 @@ const Header = () => {
             id="mobile-menu-2"
           >
             <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-              <li>
-                <NavLink
-                  to="/"
-                  className={({ isActive }) =>
-                    isActive ? "py-2 border-b-2 border-red-500" : "py-2"
-                  }
-                >
-                  Home
-                </NavLink>
-              </li>
               <li>
                 <NavLink
                   to="/mensSneaker"

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   return (
@@ -13,24 +13,19 @@ const Footer = () => {
         </a>
         <ul className="flex flex-wrap justify-center items-center mb-6 text-gray-900 mt-5">
           <li>
-            <Link href="#" className="mr-4 hover:underline md:mr-6 ">
-              HOME
-            </Link>
+            <a href="#" className="mr-4 hover:underline md:mr-6 ">
+              <FaFacebook></FaFacebook>
+            </a>
           </li>
           <li>
-            <Link href="#" className="mr-4 hover:underline md:mr-6">
-              MEN
-            </Link>
+            <a href="#" className="mr-4 hover:underline md:mr-6 ">
+              <FaInstagram></FaInstagram>
+            </a>
           </li>
           <li>
-            <Link href="#" className="mr-4 hover:underline md:mr-6 ">
-              WOMEN
-            </Link>
-          </li>
-          <li>
-            <Link href="#" className="mr-4 hover:underline md:mr-6">
-              KIDS
-            </Link>
+            <a href="#" className="mr-4 hover:underline md:mr-6 ">
+              <FaTwitter></FaTwitter>
+            </a>
           </li>
         </ul>
         <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
