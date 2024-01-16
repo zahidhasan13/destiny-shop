@@ -60,48 +60,80 @@ const Header = () => {
                 <NavLink
                   to="/"
                   className={({ isActive }) =>
-                    isActive
-                      ? "py-2 pr-4 pl-3 border-b-2 border-red-500"
-                      : "py-2 pr-4 pl-3"
+                    isActive ? "py-2 border-b-2 border-red-500" : "py-2"
                   }
                 >
-                  HOME
+                  Home
                 </NavLink>
               </li>
               <li>
                 <NavLink
                   to="/men"
                   className={({ isActive }) =>
-                    isActive
-                      ? "py-2 pr-4 pl-3 border-b-2 border-red-500"
-                      : "py-2 pr-4 pl-3"
+                    isActive ? "py-2 border-b-2 border-red-500" : "py-2"
                   }
                 >
-                  MEN
+                  Mens Sneaker
                 </NavLink>
               </li>
               <li>
                 <NavLink
                   to="/women"
                   className={({ isActive }) =>
-                    isActive
-                      ? "py-2 pr-4 pl-3 border-b-2 border-red-500"
-                      : "py-2 pr-4 pl-3"
+                    isActive ? "py-2 border-b-2 border-red-500" : "py-2"
                   }
                 >
-                  WOMEN
+                  Mens Pants
                 </NavLink>
               </li>
               <li>
                 <NavLink
                   to="/kids"
                   className={({ isActive }) =>
-                    isActive
-                      ? "py-2 pr-4 pl-3 border-b-2 border-red-500"
-                      : "py-2 pr-4 pl-3"
+                    isActive ? "py-2 border-b-2 border-red-500" : "py-2"
                   }
                 >
-                  KIDS
+                  Mens Boot
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/kids"
+                  className={({ isActive }) =>
+                    isActive ? "py-2 border-b-2 border-red-500" : "py-2"
+                  }
+                >
+                  Bag
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/kids"
+                  className={({ isActive }) =>
+                    isActive ? "py-2 border-b-2 border-red-500" : "py-2"
+                  }
+                >
+                  Cap
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/kids"
+                  className={({ isActive }) =>
+                    isActive ? "py-2 border-b-2 border-red-500" : "py-2"
+                  }
+                >
+                  Earphone
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/kids"
+                  className={({ isActive }) =>
+                    isActive ? "py-2 border-b-2 border-red-500" : "py-2"
+                  }
+                >
+                  Bottle
                 </NavLink>
               </li>
             </ul>
