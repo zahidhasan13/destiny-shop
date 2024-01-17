@@ -10,7 +10,7 @@ const ProductsCategory = ({ category }) => {
       <h3 className="uppercase font-semibold text-3xl text-center border-b-2 border-black mx-80">
         {category}: {categoryProducts.length}
       </h3>
-      <div className="grid grid-cols-4 gap-5 mt-10">
+      <div className="grid grid-cols-5 gap-5 mt-10">
         {categoryProducts.map((product) => (
           <SingleProduct key={product.id} product={product}></SingleProduct>
         ))}

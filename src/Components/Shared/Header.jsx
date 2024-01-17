@@ -1,7 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import cartIcon from "../../assets/cart_icon.png";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
   return (
     <header>
       <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 shadow-lg">
@@ -12,12 +15,16 @@ const Header = () => {
             </span>
           </Link>
           <div className="flex items-center lg:order-2">
-            <Link
-              to="/login"
-              className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 rounded-lg px-4 lg:px-5 py-2 lg:py-2.5 font-bold"
-            >
-              Log in
-            </Link>
+            {user ? (
+              <p className="font-semibold">{user?.email}</p>
+            ) : (
+              <Link
+                to="/login"
+                className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 rounded-lg px-4 lg:px-5 py-2 lg:py-2.5 font-bold"
+              >
+                Log in
+              </Link>
+            )}
             <Link
               to="/cart"
               className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 font-bold"

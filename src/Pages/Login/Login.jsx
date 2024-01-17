@@ -1,7 +1,28 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { loginUser } = useContext(AuthContext);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    loginUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        alert("Login Successfully");
+        form.reset();
+        navigate("/");
+      })
+      .catch((err) => {
+        alert("Login Failed");
+      });
+  };
   return (
     <section className="bg-gray-50">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -15,7 +36,7 @@ const Login = () => {
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl text-center">
               Sign in to your account
             </h1>
-            <form className="space-y-4 md:space-y-6" action="#">
+            <form onSubmit={handleLogin} className="space-y-4 md:space-y-6">
               <div>
                 <label
                   for="email"

@@ -1,7 +1,33 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const SignUp = () => {
+  const navigate = useNavigate();
+  const { createUser } = useContext(AuthContext);
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    const confirm = form.confirm.value;
+
+    if (password !== confirm) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        alert("User created successfully");
+        form.reset();
+        navigate("/login");
+      })
+      .catch((error) => {
+        alert("User creation failed");
+      });
+  };
   return (
     <section className="bg-gray-50">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -15,7 +41,7 @@ const SignUp = () => {
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl text-center">
               Create and account
             </h1>
-            <form className="space-y-4 md:space-y-6" action="#">
+            <form onSubmit={handleSignUp} className="space-y-4 md:space-y-6">
               <div>
                 <label
                   for="email"
@@ -56,8 +82,8 @@ const SignUp = () => {
                   Confirm password
                 </label>
                 <input
-                  type="confirm-password"
-                  name="confirm-password"
+                  type="password"
+                  name="confirm"
                   id="confirm-password"
                   placeholder="••••••••"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
