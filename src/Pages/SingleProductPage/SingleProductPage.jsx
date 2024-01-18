@@ -1,17 +1,37 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import useProducts from "../../Hook/useProducts";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import SingleProduct from "../../Components/SingleProduct";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const SingleProductPage = () => {
+  const { cart, setCart, user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [products] = useProducts();
   const { id } = useParams();
   const product = products.find((product) => product.id === id);
   const relatedProoducts = products.filter(
     (pd) => pd.category === product?.category
   );
+
+  const addToCart = (product) => {
+    let newCart = [];
+    const exist = cart.find((c) => c.id === product.id);
+    if (!user) {
+      navigate("/login");
+    } else if (!exist) {
+      product.quantity = 1;
+      newCart = [...cart, product];
+    } else {
+      exist.quantity = exist.quantity + 1;
+      const remaining = cart.filter((pd) => pd.id !== product.id);
+      newCart = [...remaining, exist];
+    }
+    setCart(newCart);
+  };
+
   return (
     <div className="max-w-screen-xl mx-auto my-5">
       <div className="grid md:grid-cols-2 gap-5">
@@ -34,7 +54,10 @@ const SingleProductPage = () => {
               ${product?.price}
             </span>
           </p>
-          <button className="bg-orange-600 py-2 px-4 text-white font-bold rounded-md hover:text-orange-900 mb-2">
+          <button
+            onClick={() => addToCart(product)}
+            className="bg-orange-600 py-2 px-4 text-white font-bold rounded-md hover:text-orange-900 mb-2"
+          >
             Add To Cart
           </button>
           <p>

@@ -4,7 +4,13 @@ import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, cart } = useContext(AuthContext);
+
+  let quantity = 0;
+  for (const product of cart) {
+    product.quantity = product.quantity || 1;
+    quantity = quantity + product.quantity;
+  }
   return (
     <header>
       <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 shadow-lg">
@@ -32,7 +38,7 @@ const Header = () => {
               <div className="relative">
                 <img src={cartIcon} alt="" className="w-6" />
                 <span className="bg-orange-600 w-5 h-5 absolute -top-2 -right-3 rounded-full flex justify-center items-center text-white">
-                  0
+                  {quantity}
                 </span>
               </div>
             </Link>

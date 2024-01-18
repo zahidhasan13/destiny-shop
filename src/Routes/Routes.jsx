@@ -5,6 +5,8 @@ import ProductsCategory from "../Pages/ProductsCategory/ProductsCategory";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import SingleProductPage from "../Pages/SingleProductPage/SingleProductPage";
+import Cart from "../Pages/Cart/Cart";
+import PrivateRouter from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +49,10 @@ const router = createBrowserRouter([
         path: "productDetails/:id",
         element: <SingleProductPage></SingleProductPage>,
       },
+      {
+        path: "cart",
+        element: <PrivateRouter><Cart></Cart></PrivateRouter>
+      }
     ],
   },
   {

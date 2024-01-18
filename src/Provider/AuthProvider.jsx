@@ -13,6 +13,7 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(null);
+  const [cart, setCart] = useState([]);
 
   // Create User
   const createUser = (email, password) => {
@@ -43,6 +44,8 @@ const AuthProvider = ({ children }) => {
   const authInfo = {
     user,
     loading,
+    cart,
+    setCart,
     createUser,
     loginUser,
     logOutUser,
