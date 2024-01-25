@@ -12,8 +12,7 @@ export const AuthContext = createContext(null);
 const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(null);
-  const [cart, setCart] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   // Create User
   const createUser = (email, password) => {
@@ -38,14 +37,13 @@ const AuthProvider = ({ children }) => {
 
   // Logout User
   const logOutUser = () => {
+    setLoading(true);
     return signOut(auth);
   };
 
   const authInfo = {
     user,
     loading,
-    cart,
-    setCart,
     createUser,
     loginUser,
     logOutUser,

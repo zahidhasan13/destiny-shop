@@ -2,15 +2,20 @@ import { Link, NavLink } from "react-router-dom";
 import cartIcon from "../../assets/cart_icon.png";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import useCart from "../../Hook/useCart";
 
 const Header = () => {
-  const { user, cart } = useContext(AuthContext);
+  const { user, logOutUser } = useContext(AuthContext);
+  const [cart] = useCart();
+  const logOut = () => {
+    logOutUser();
+  };
 
-  let quantity = 0;
-  for (const product of cart) {
-    product.quantity = product.quantity || 1;
-    quantity = quantity + product.quantity;
-  }
+  // let quantity = 0;
+  // for (const product of cart) {
+  //   product.quantity = product.quantity || 1;
+  //   quantity = quantity + product.quantity;
+  // }
   return (
     <header>
       <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 shadow-lg">
@@ -22,23 +27,26 @@ const Header = () => {
           </Link>
           <div className="flex items-center lg:order-2">
             {user ? (
-              <p className="font-semibold">{user?.email}</p>
+              <div>
+                <p className="font-semibold">{user?.email}</p>
+                <button onClick={logOut}>Log out</button>
+              </div>
             ) : (
               <Link
                 to="/login"
-                className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 rounded-lg px-4 lg:px-5 py-2 lg:py-2.5 font-bold"
+                className="text-gray-800 hover:bg-gray-50 rounded-lg px-4 lg:px-5 py-2 lg:py-2.5 font-bold"
               >
                 Log in
               </Link>
             )}
             <Link
               to="/cart"
-              className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 font-bold"
+              className="text-gray-800 hover:bg-gray-50 rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 font-bold"
             >
               <div className="relative">
                 <img src={cartIcon} alt="" className="w-6" />
                 <span className="bg-orange-600 w-5 h-5 absolute -top-2 -right-3 rounded-full flex justify-center items-center text-white">
-                  {quantity}
+                  {cart.length}
                 </span>
               </div>
             </Link>
