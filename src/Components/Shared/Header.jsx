@@ -1,12 +1,19 @@
 import { Link, NavLink } from "react-router-dom";
 import cartIcon from "../../assets/cart_icon.png";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import useCart from "../../Hook/useCart";
 
 const Header = () => {
   const { user, logOutUser } = useContext(AuthContext);
   const [cart] = useCart();
+  let cartQuantity = [];
+  cart.forEach((quantity) => {
+    cartQuantity.push(quantity.quantity);
+  });
+
+  const totalQuantity = cartQuantity.reduce((sum, item) => item + sum, 0);
+
   const logOut = () => {
     logOutUser();
   };
@@ -46,7 +53,7 @@ const Header = () => {
               <div className="relative">
                 <img src={cartIcon} alt="" className="w-6" />
                 <span className="bg-orange-600 w-5 h-5 absolute -top-2 -right-3 rounded-full flex justify-center items-center text-white">
-                  {cart.length}
+                  {totalQuantity}
                 </span>
               </div>
             </Link>

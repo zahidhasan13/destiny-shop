@@ -4,14 +4,12 @@ import useCart from "../../Hook/useCart";
 
 const Cart = () => {
   const [cart] = useCart();
-  console.log(cart);
 
-  let quantity = 0;
   let totalPrice = 0;
-  let totalShipping = 120;
+  let totalShipping = 0;
   for (const ct of cart) {
-    ct.quantity = ct.quantity || 1;
-    quantity = ct + ct.quantity;
+    // ct.quantity = ct.quantity || 1;
+    // quantity = ct + ct.quantity;
     totalPrice = totalPrice + ct.price * ct.quantity;
     totalShipping = totalShipping + ct.shipping;
   }

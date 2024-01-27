@@ -13,7 +13,7 @@ const PopularBoot = () => {
       </h3>
       <div className="grid grid-cols-4 gap-5 mt-10">
         {popular.slice(1, 5).map((product) => (
-          <SingleProduct key={product.id} product={product}></SingleProduct>
+          <SingleProduct key={product._id} product={product}></SingleProduct>
         ))}
       </div>
     </div>

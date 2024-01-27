@@ -4,10 +4,13 @@ import { AuthContext } from "../Provider/AuthProvider";
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
-  console.log(user?.email);
 
   if (loading) {
-    return <h3>Loading....</h3>;
+    return (
+      <div className="text-center my-10">
+        <span className="loading loading-ring loading-lg text-center"></span>
+      </div>
+    );
   }
   if (user) {
     return children;

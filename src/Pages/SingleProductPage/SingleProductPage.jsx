@@ -6,6 +6,7 @@ import "@smastrom/react-rating/style.css";
 import SingleProduct from "../../Components/SingleProduct";
 import { AuthContext } from "../../Provider/AuthProvider";
 import useCart from "../../Hook/useCart";
+import Swal from "sweetalert2";
 
 const SingleProductPage = () => {
   const { user } = useContext(AuthContext);
@@ -25,7 +26,7 @@ const SingleProductPage = () => {
         name: product?.name,
         price: product?.price,
         img: product?.img,
-        quantity: product?.quantity,
+        quantity: product?.quantity + 1,
         shipping: product?.shipping,
         email: user?.email,
       };
@@ -38,9 +39,15 @@ const SingleProductPage = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          if (data.insertedId) {
+          if (data.insertedId || data.modifiedCount) {
             refetch();
-            alert("Add to cart successfully");
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Added successfully",
+              showConfirmButton: false,
+              timer: 1500,
+            });
           }
         });
     } else {
