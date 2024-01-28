@@ -1,18 +1,21 @@
 import React from "react";
 import CartItem from "../../Components/CartItem";
 import useCart from "../../Hook/useCart";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const [cart] = useCart();
 
   let totalPrice = 0;
   let totalShipping = 0;
+  let cartQuantity = [];
   for (const ct of cart) {
-    // ct.quantity = ct.quantity || 1;
-    // quantity = ct + ct.quantity;
+    cartQuantity.push(ct.quantity);
+
     totalPrice = totalPrice + ct.price * ct.quantity;
     totalShipping = totalShipping + ct.shipping;
   }
+  const totalQuantity = cartQuantity.reduce((sum, item) => item + sum, 0);
 
   const tax = (totalPrice * 2) / 100;
   const grandTotal = totalPrice + totalShipping + tax;
@@ -33,14 +36,16 @@ const Cart = () => {
           </div>
         </div>
         <div className="col-span-1 border-2 p-2 space-y-4">
-          <p className="text-xl font-bold">Total Product: {cart.length}</p>
+          <p className="text-xl font-bold">Total Product: {totalQuantity}</p>
           <p className="font-semibold">Total Amount: {totalPrice}</p>
           <p className="font-semibold">Shipping: {totalShipping}</p>
           <p className="font-semibold">Tax: {tax}</p>
           <p className="font-semibold">Grand Total: {grandTotal}</p>
-          <button className="bg-orange-600 py-2 px-4 text-white font-bold rounded-md hover:text-orange-900 mb-2 w-full">
-            Pay
-          </button>
+          <Link to="/checkout">
+            <button className="bg-orange-600 py-2 px-4 text-white font-bold rounded-md hover:text-orange-900 mb-2 w-full mt-5">
+              Proceed to checkout ({totalQuantity})
+            </button>
+          </Link>
         </div>
       </div>
     </div>
