@@ -8,6 +8,8 @@ import SingleProductPage from "../Pages/SingleProductPage/SingleProductPage";
 import Cart from "../Pages/Cart/Cart";
 import PrivateRoute from "./PrivateRoute";
 import Checkout from "../Pages/Checkout/Checkout";
+import Success from "../Pages/Payment/Success";
+import PaymentFail from "../Pages/Payment/PaymentFail";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +63,14 @@ const router = createBrowserRouter([
       {
         path: "checkout",
         element: <Checkout></Checkout>,
+      },
+      {
+        path: "payment/success/:tranId",
+        element: <Success></Success>,
+      },
+      {
+        path: "payment/fail/:tranId",
+        element: <PaymentFail></PaymentFail>,
       },
     ],
   },
